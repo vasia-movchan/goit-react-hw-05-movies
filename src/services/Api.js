@@ -26,3 +26,11 @@ export async function getMovieCredits(id) {
 
   return data;
 }
+
+export async function getMovies(searchQuery) {
+  const { data } = await instance.get('/search/movie', {
+    params: { query: searchQuery },
+  });
+
+  return data;
+}
