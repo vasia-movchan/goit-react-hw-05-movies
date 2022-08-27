@@ -52,8 +52,10 @@ const MovieDetails = () => {
   return (
     <>
       <ButtonStyled onClick={goBack}>Go Back</ButtonStyled>
-      {loading ? (
-        <p>...Loading</p>
+      {loading && <p>...Loading</p>}
+
+      {error ? (
+        <p>...Movies load failed</p>
       ) : (
         <>
           <MovieCard>
@@ -89,7 +91,6 @@ const MovieDetails = () => {
           <Outlet />
         </>
       )}
-      {error && <p>...Movies load failed</p>}
     </>
   );
 };
