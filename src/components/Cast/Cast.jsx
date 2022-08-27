@@ -16,9 +16,7 @@ const Cast = () => {
     const fetchCredits = async () => {
       try {
         setLoading(true);
-
         const { cast } = await getMovieCredits(movieId);
-        console.log(cast);
         setCredits(cast);
       } catch (error) {
         setError(error);

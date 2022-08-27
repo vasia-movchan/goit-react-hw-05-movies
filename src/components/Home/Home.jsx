@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { getTrendingMovies } from '../../services/Api';
 
@@ -27,9 +27,14 @@ const Home = () => {
     fetchMovies();
   }, []);
 
+  const location = useLocation();
+  console.log(location);
+
   const listMovies = itemsMovies.map(({ id, title }) => (
     <li key={id}>
-      <Link to={`/movies/${id}`}>{title}</Link>
+      <Link state={{ from: location }} to={`/movies/${id}`}>
+        {title}
+      </Link>
     </li>
   ));
 

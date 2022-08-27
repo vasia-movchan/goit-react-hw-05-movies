@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 
 import { FormStyled, Wrapper } from './Movies.styled';
 
@@ -32,7 +32,7 @@ const Movies = () => {
         setLoading(true);
 
         const { results } = await getMovies(searchQuery);
-        console.log(results);
+
         setItemsMovies(results);
       } catch (error) {
         setError(error);
@@ -46,9 +46,13 @@ const Movies = () => {
     }
   }, [searchQuery]);
 
+  const location = useLocation();
+
   const listMovies = itemsMovies.map(({ id, title }) => (
     <li key={id}>
-      <Link to={`/movies/${id}`}>{title}</Link>
+      <Link state={{ from: location }} to={`/movies/${id}`}>
+        {title}
+      </Link>
     </li>
   ));
 
