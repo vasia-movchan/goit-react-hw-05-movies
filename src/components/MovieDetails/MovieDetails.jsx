@@ -48,7 +48,7 @@ const MovieDetails = () => {
             )}
             <div>
               <h2>{title}</h2>
-              <p>User Score: {vote_average * 10}%</p>
+              <p>User Score: {Math.round(vote_average * 10)}%</p>
               <h4>Overview</h4>
               <p>{overview}</p>
               <h4>Genres</h4>

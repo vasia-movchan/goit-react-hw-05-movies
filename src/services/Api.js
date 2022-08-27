@@ -34,3 +34,9 @@ export async function getMovies(searchQuery) {
 
   return data;
 }
+
+export async function getMovieReviews(id) {
+  const { data } = await instance.get(`/movie/${id}/reviews`);
+
+  return data;
+}

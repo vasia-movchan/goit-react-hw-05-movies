@@ -58,7 +58,10 @@ const Movies = () => {
         <input onChange={handleChange} value={inputValue} required />
         <button>Search</button>
       </FormStyled>
-      {itemsMovies.length > 0 && <ul>{listMovies}</ul>}
+      {itemsMovies && <ul>{listMovies}</ul>}
+      {searchQuery && itemsMovies.length === 0 && (
+        <p>Nothing was found for your request</p>
+      )}
       {loading && <p>...Loading</p>}
       {error && <p>...Movies load failed</p>}
     </Wrapper>
