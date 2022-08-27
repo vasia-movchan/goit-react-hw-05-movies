@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 import { getTrendingMovies } from '../../services/Api';
 
-const TrendingMovies = () => {
+import { Wrapper } from './Home.styled';
+
+const Home = () => {
   const [itemsMovies, setItemsMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,24 +24,23 @@ const TrendingMovies = () => {
       }
     };
 
-    if (itemsMovies.length === 0) {
-      fetchMovies();
-    }
-  }, [itemsMovies]);
+    fetchMovies();
+  }, []);
 
   const listMovies = itemsMovies.map(({ id, title }) => (
     <li key={id}>
-      <Link to={`movie/${id}`}>{title}</Link>
+      <Link to={`movies/${id}`}>{title}</Link>
     </li>
   ));
 
   return (
-    <div>
+    <Wrapper>
+      <h2>Trending today</h2>
       {<ul>{listMovies}</ul>}
       {loading && <p>...Loading</p>}
       {error && <p>...Movies load failed</p>}
-    </div>
+    </Wrapper>
   );
 };
 
-export default TrendingMovies;
+export default Home;

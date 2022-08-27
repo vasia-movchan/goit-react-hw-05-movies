@@ -9,16 +9,20 @@ const instance = axios.create({
   },
 });
 
-// trending / movie / day;
-
 export async function getTrendingMovies() {
   const { data } = await instance.get('/trending/movie/day');
 
   return data;
 }
 
-// export const getSinglePost = async id => {
-//   const { data } = await instance.get(`/${id}`);
+export async function getSingleMovies(id) {
+  const { data } = await instance.get(`/movie/${id}`);
 
-//   return data;
-// };
+  return data;
+}
+
+export async function getMovieCredits(id) {
+  const { data } = await instance.get(`/movie/${id}/credits`);
+
+  return data;
+}
